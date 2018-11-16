@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Tweet</title>
+    <title><%= yield(:title) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -11,7 +11,9 @@
     <div class="container">
             <%= render 'layouts/header' %>
             <% flash.each do |message_type, message| %>
-              <div class="alert alert-<%= message_type %>"><%= message %></div>
+
+              <%= content_tag(:div, message, class:"alert alert-#{message_type}") %>
+                            
             <% end %>
 
           <%= yield %>
